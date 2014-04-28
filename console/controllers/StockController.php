@@ -21,11 +21,17 @@ class StockController extends Controller {
         $model = Stock::find()->limit(10)->all();
 
         foreach($model as $row){
-            $model_dailyStockOnHand = new Daily_stock_on_hand();
-            $model_dailyStockOnHand->ProductID = $row->ProductID;
-            $model_dailyStockOnHand->OnHand = $row->Onhandbal;
-            $model_dailyStockOnHand->Date = new Expression('NOW()');
-            $model_dailyStockOnHand->save();
+            if(!Daily_stock_on_hand::findBySql('select * from daily_stock_on_hand where ProductID=:ProductID and Date=current_date',[':ProductID'=>$row->ProductID])->exists()){
+
+                $model_dailyStockOnHand = new Daily_stock_on_hand();
+                $model_dailyStockOnHand->ProductID = $row->ProductID;
+                $model_dailyStockOnHand->OnHand = $row->Onhandbal;
+                $model_dailyStockOnHand->Date = new Expression('current_date');
+                $model_dailyStockOnHand->save();
+            }else{
+                echo "record already added";
+            }
+
 
 
         }
