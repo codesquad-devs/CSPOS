@@ -1,5 +1,5 @@
 # yii console command
-/yii
+#/yii
 
 # phpstorm project files
 .idea
@@ -19,7 +19,7 @@ Thumbs.db
 #/vendor
 
 # composer itself is not needed
-composer.phar
+#composer.phar
 
 # Mac DS_Store Files
 .DS_Store
