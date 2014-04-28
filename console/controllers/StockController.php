@@ -27,6 +27,7 @@ class StockController extends Controller {
                 $model_dailyStockOnHand->ProductID = $row->ProductID;
                 $model_dailyStockOnHand->OnHand = $row->Onhandbal;
                 $model_dailyStockOnHand->Date = new Expression('current_date');
+                $model_dailyStockOnHand->Cost = $row['Cost'];
                 $model_dailyStockOnHand->save();
             }else{
                 echo "record already added";
