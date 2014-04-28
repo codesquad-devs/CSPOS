@@ -9,7 +9,7 @@ class m140425_132659_create_daily_stock_on_hand_table extends \yii\db\Migration
         $this->createTable("daily_stock_on_hand",array(
             'id'=>'pk',
             'ProductID'=>'string',
-            'Onhand'=>'double',
+            'OnHand'=>'double',
             'Date'=>'date',
         ));
     }
