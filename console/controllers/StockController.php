@@ -18,7 +18,7 @@ class StockController extends Controller {
  
     public function actionSave_daily_stockonhand(){
 
-        $model = Stock::find()->limit(10)->all();
+        $model = Stock::find()->all();
 
         foreach($model as $row){
             if(!Daily_stock_on_hand::findBySql('select * from daily_stock_on_hand where ProductID=:ProductID and Date=current_date',[':ProductID'=>$row->ProductID])->exists()){
