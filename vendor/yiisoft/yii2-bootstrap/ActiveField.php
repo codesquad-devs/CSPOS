@@ -11,13 +11,13 @@ use yii\helpers\Html;
 use yii\helpers\ArrayHelper;
 
 /**
- * A Bootstrap 3 enhanced version of [[yii\widgets\ActiveField]].
+ * A Bootstrap 3 enhanced version of [[\yii\widgets\ActiveField]].
  *
- * This class adds some useful features to [[yii\widgets\ActiveField|ActiveField]] to render all
+ * This class adds some useful features to [[\yii\widgets\ActiveField|ActiveField]] to render all
  * sorts of Bootstrap 3 form fields in different form layouts:
  *
  * - [[inputTemplate]] is an optional template to render complex inputs, for example input groups
- * - [[horizontalClass]] defines the CSS grid classes to add to label, wrapper, error and hint
+ * - [[horizontalCssClasses]] defines the CSS grid classes to add to label, wrapper, error and hint
  *   in horizontal forms
  * - [[inline]]/[[inline()]] is used to render inline [[checkboxList()]] and [[radioList()]]
  * - [[enableError]] can be set to `false` to disable to the error
@@ -173,6 +173,9 @@ class ActiveField extends \yii\widgets\ActiveField
                 } else {
                     $this->template = "<div class=\"checkbox\">\n{beginLabel}\n{input}\n{labelTitle}\n{endLabel}\n{error}\n{hint}\n</div>";
                 }
+            } else {
+                $this->template = $options['template'];
+                unset($options['template']);
             }
             $this->labelOptions['class'] = null;
         }
@@ -189,6 +192,9 @@ class ActiveField extends \yii\widgets\ActiveField
         if ($this->inline) {
             if (!isset($options['template'])) {
                 $this->template = "{label}\n{beginWrapper}\n{input}\n{error}\n{endWrapper}\n{hint}";
+            } else {
+                $this->template = $options['template'];
+                unset($options['template']);
             }
             if (!isset($options['itemOptions'])) {
                 $options['itemOptions'] = [
@@ -209,6 +215,9 @@ class ActiveField extends \yii\widgets\ActiveField
         if ($this->inline) {
             if (!isset($options['template'])) {
                 $this->template = "{label}\n{beginWrapper}\n{input}\n{error}\n{endWrapper}\n{hint}";
+            } else {
+                $this->template = $options['template'];
+                unset($options['template']);
             }
             if (!isset($options['itemOptions'])) {
                 $options['itemOptions'] = [
